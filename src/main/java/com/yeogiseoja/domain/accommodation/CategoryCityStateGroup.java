@@ -2,6 +2,7 @@ package com.yeogiseoja.domain.accommodation;
 
 import com.yeogiseoja.domain.accommodation.address.State;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +17,6 @@ public class CategoryCityStateGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_state_city_id")
     private Long id;
-    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_city_id")
@@ -25,5 +25,14 @@ public class CategoryCityStateGroup {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "state_id")
     private State state;
+
+    @Builder
+    public CategoryCityStateGroup(
+            CategoryCityGroup categoryCityGroup,
+            State state
+    ) {
+        this.categoryCityGroup = categoryCityGroup;
+        this.state = state;
+    }
 
 }
