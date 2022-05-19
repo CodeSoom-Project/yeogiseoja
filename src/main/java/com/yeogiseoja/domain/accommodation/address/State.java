@@ -15,7 +15,6 @@ public class State {
     private String name;
 
     public State(Long id, String name) {
-        this.id = id;
         this.name = name;
     }
 }
