@@ -1,8 +1,8 @@
 package com.yeogiseoja.domain.accommodation;
 
 import com.yeogiseoja.domain.accommodation.address.City;
-import com.yeogiseoja.domain.accommodation.address.State;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.assertj.core.util.Lists;
@@ -30,4 +30,13 @@ public class CategoryCityGroup {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoryCityGroup", cascade = CascadeType.PERSIST)
     private List<CategoryCityStateGroup> itemOptionList = Lists.newArrayList();
+
+    @Builder
+    public CategoryCityGroup(
+            Category category,
+            City city
+    ) {
+        this.category = category;
+        this.city = city;
+    }
 }
